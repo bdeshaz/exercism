@@ -1,18 +1,11 @@
+from re import sub
+
 def is_pangram(words):
-    words = words.lower().replace(" ", "")
-    words = list(set(words))
+    """
+        Thanks to DUznanki for help on solution
+        I explored re.sub and regex format due to their solution.
+        As well, realized a conditional can be returned
+    """
 
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-    alphabet = list(alphabet)
-
-    print(alphabet)
-
-    for letter in words:
-        if letter in alphabet:
-            alphabet.remove(letter)
-
-    if len(alphabet) > 0:
-        return False
-
-    return True
+	letters = set(sub('[^a-z]','',words.lower()))
+	return len(letters) == 26
